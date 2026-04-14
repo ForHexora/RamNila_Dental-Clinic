@@ -26,7 +26,10 @@
     <meta property="og:image" content="https://yourdomain.com/images/clinic-og.jpg">
     <meta property="og:site_name" content="Ram Nila Dental Clinic">
     <meta property="og:locale" content="en_IN">
-    
+    <!-- PWA Meta Tags -->
+<meta name="theme-color" content="#0e7490">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <!-- ===== TWITTER CARD ===== -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Best Dental Clinic in Panruti | Ram Nila Dental">
@@ -45,6 +48,7 @@
     <!-- ===== EXISTING FONTS & ICONS ===== -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preload" href="images/clinic-exterior.webp" as="image" type="image/webp">
     <style>
         /* ===== CSS RESET & VARIABLES ===== */
         :root {
@@ -70,6 +74,11 @@
             --radius-xl: 30px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+        html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
 
         * {
             margin: 0;
@@ -431,6 +440,20 @@
             flex-wrap: wrap;
         }
 
+        /* Prevent double-tap zoom + remove blue tap highlight */
+a, button, .service-card, .team-card, .faq-question, .slider-btn, .gallery-item {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Remove default blue outline, add accessible focus */
+a:focus, button:focus {
+    outline: none;
+}
+a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
         .btn {
             display: inline-flex;
             align-items: center;
@@ -533,6 +556,43 @@
             color: rgba(255,255,255,0.9);
             filter: drop-shadow(0 10px 30px rgba(0,0,0,0.1));
         }
+/* ===== GALLERY IMAGE LOADING & HOVER ===== */
+.gallery-item {
+    background-color: var(--bg-light); /* Fallback while image loads */
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.gallery-item img {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.gallery-item img.loaded {
+    opacity: 1 !important;
+}
+
+/* Enhanced hover effect */
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Lightbox overlay enhancement - No color overlay */
+.gallery-overlay {
+    cursor: zoom-in;
+    transition: var(--transition);
+    background: transparent; /* Keep transparent always */
+}
+
+.gallery-item:hover .gallery-overlay {
+    background: transparent; /* No blue color on hover */
+    opacity: 1; /* Just show the icon */
+}
 
         .floating-card {
             position: absolute;
@@ -1995,6 +2055,17 @@
         height: 48px;
     }
 }
+/* Safe area support for iPhone notch/home indicator */
+body {
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Adjust fixed elements for notch */
+.navbar, .whatsapp-float, .scroll-top {
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+}
     </style>
 
     <!-- ===== LOCAL BUSINESS SCHEMA (Critical for Local SEO) ===== -->
@@ -2150,8 +2221,6 @@
                 <div class="hero-badge">
                     <i class="fas fa-star"></i>
                     Multi-speciality Dental Clinic
-                    <i class="fas fa-star"></i>
-                    #1 Rated Dental Clinic in the City
                 </div>
                 <h1>Trusted Dental Care in <span>Panruti, Tamil Nadu</span></h1>
 <p>Expert dentists near Meena Medical offering painless teeth cleaning, implants, root canal & emergency dental services. Serving Panruti, Cuddalore & surrounding areas.</p>
@@ -2219,6 +2288,10 @@
     <section class="section services" id="services">
         <div class="container">
             <div class="section-header reveal">
+                <div class="hero-badge">
+                    <i class="fas fa-star"></i>
+                    #1 Rated Dental Clinic in the City
+                </div>
                 <div class="section-badge">
                     <i class="fas fa-tooth"></i>
                     Our Services
@@ -2358,7 +2431,7 @@
                         </div>
                     </div>
                     <div class="team-info">
-                        <h3>Dr. Sarah Johnson</h3>
+                        <h3>Dr. Shanmuganathan R</h3>
                         <p>Lead Dentist & Founder</p>
                     </div>
                 </div>
@@ -2556,27 +2629,61 @@
                 <p>Take a virtual tour of our state-of-the-art dental facility.</p>
             </div>
             <div class="gallery-grid reveal">
-                <div class="gallery-item">
-                    <i class="fas fa-hospital"></i>
-                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
-                </div>
-                <div class="gallery-item">
-                    <i class="fas fa-chair"></i>
-                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
-                </div>
-                <div class="gallery-item">
-                    <i class="fas fa-microscope"></i>
-                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
-                </div>
-                <div class="gallery-item">
-                    <i class="fas fa-x-ray"></i>
-                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
-                </div>
-                <div class="gallery-item">
-                    <i class="fas fa-procedures"></i>
-                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
-                </div>
-            </div>
+    <!-- Main Large Image (Spans 2x2) - Clinic Exterior -->
+    <div class="gallery-item" style="background-image: url('images/clinic-exterior.webp'); background-size: cover; background-position: center;">
+        <img src="images/1775827634814.jpg" 
+             alt="Ram Nila Dental Clinic exterior building near Meena Medical Panruti Tamil Nadu" 
+             loading="lazy" 
+             width="800" 
+             height="600"
+             style="width:100%;height:100%;object-fit:cover;opacity:0;">
+        <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+    </div>
+    
+    <!-- Image 2: Reception Area -->
+    <div class="gallery-item" style="background-image: url('images/reception-area.webp'); background-size: cover; background-position: center;">
+        <img src="images/1775827711094.png" 
+             alt="Welcoming reception and waiting area at Ram Nila Dental Clinic Panruti" 
+             loading="lazy" 
+             width="600" 
+             height="400"
+             style="width:100%;height:100%;object-fit:cover;opacity:0;">
+        <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+    </div>
+    
+    <!-- Image 3: Dental Chair/Treatment -->
+    <div class="gallery-item" style="background-image: url('images/dental-chair.webp'); background-size: cover; background-position: center;">
+        <img src="images/1775827821569.png" 
+             alt="Modern dental treatment chair with advanced equipment at Ram Nila Clinic Panruti" 
+             loading="lazy" 
+             width="600" 
+             height="400"
+             style="width:100%;height:100%;object-fit:cover;opacity:0;">
+        <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+    </div>
+    
+    <!-- Image 4: Equipment/Technology -->
+    <div class="gallery-item" style="background-image: url('images/equipment.webp'); background-size: cover; background-position: center;">
+        <img src="images/IMG20260410181508.jpg" 
+             alt="Sterilized dental instruments and digital X-ray machine Ram Nila Dental Clinic" 
+             loading="lazy" 
+             width="600" 
+             height="400"
+             style="width:100%;height:100%;object-fit:cover;opacity:0;">
+        <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+    </div>
+    
+    <!-- Image 5: Team Photo -->
+    <div class="gallery-item" style="background-image: url('images/team-photo.webp'); background-size: cover; background-position: center;">
+        <img src="images/IMG20260410181528.jpg" 
+             alt="Expert dental team at Ram Nila Multi-speciality Clinic Panruti Tamil Nadu" 
+             loading="lazy" 
+             width="600" 
+             height="400"
+             style="width:100%;height:100%;object-fit:cover;opacity:0;">
+        <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+    </div>
+</div>
         </div>
     </section>
 
@@ -2696,7 +2803,7 @@
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
@@ -2858,7 +2965,7 @@
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://wa.me/1234567890?text=Hello%20Ram Nila_Dental%20Clinic!%20I%20would%20like%20to%20book%20an%20appointment."><i class="fab fa-whatsapp"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     </div>
@@ -3186,6 +3293,71 @@
         // You can add a typing effect to the hero heading if desired
 
         console.log('🦷 BrightSmile Dental Clinic Website Loaded Successfully!');
+
+        // ===== GALLERY IMAGE LOADER + LIGHTBOX =====
+document.addEventListener('DOMContentLoaded', () => {
+    // Smooth image loading
+    document.querySelectorAll('.gallery-item img').forEach(img => {
+        img.onload = () => {
+            img.classList.add('loaded');
+            // Optional: Remove background after load for cleaner code
+            // img.parentElement.style.backgroundImage = 'none';
+        };
+        // Fallback if image fails
+        img.onerror = () => {
+            img.parentElement.style.background = 'var(--bg-gradient)';
+            img.parentElement.innerHTML = `
+                <i class="fas fa-image" style="font-size:3rem;color:rgba(255,255,255,0.3)"></i>
+                <div class="gallery-overlay"><i class="fas fa-exclamation-circle"></i></div>
+            `;
+        };
+    });
+
+    // Simple lightbox functionality
+    document.querySelectorAll('.gallery-overlay').forEach(overlay => {
+        overlay.addEventListener('click', function(e) {
+            e.preventDefault();
+            const img = this.parentElement.querySelector('img');
+            if (img && img.src) {
+                // Create lightbox container
+                const lightbox = document.createElement('div');
+                lightbox.style.cssText = `
+                    position: fixed; inset: 0; background: rgba(0,0,0,0.92);
+                    display: flex; align-items: center; justify-content: center;
+                    z-index: 10001; cursor: zoom-out; padding: 20px;
+                `;
+                
+                // Create enlarged image
+                const lightboxImg = document.createElement('img');
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightboxImg.style.cssText = `
+                    max-width: 95%; max-height: 90vh; 
+                    border-radius: 12px; 
+                    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+                    object-fit: contain;
+                `;
+                
+                lightbox.appendChild(lightboxImg);
+                document.body.appendChild(lightbox);
+                
+                // Close on click
+                lightbox.onclick = () => {
+                    document.body.removeChild(lightbox);
+                };
+                
+                // Close on Escape key
+                const closeOnEsc = (e) => {
+                    if (e.key === 'Escape') {
+                        document.body.removeChild(lightbox);
+                        document.removeEventListener('keydown', closeOnEsc);
+                    }
+                };
+                document.addEventListener('keydown', closeOnEsc);
+            }
+        });
+    });
+});
     </script>
 </body>
 </html>
