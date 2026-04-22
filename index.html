@@ -49,6 +49,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="preload" href="images/clinic-exterior.webp" as="image" type="image/webp">
+    <!-- PWA Manifest -->
+<link rel="manifest" href="manifest.json">
     <style>
         /* ===== CSS RESET & VARIABLES ===== */
         :root {
@@ -2032,6 +2034,72 @@ a:focus-visible, button:focus-visible {
         display: none !important;
     }
 }
+/* ===== BOTTOM NAVIGATION (Mobile App Style) ===== */
+@media (max-width: 768px) {
+    /* Hide desktop nav links on mobile */
+    .navbar .nav-links {
+        display: none !important;
+    }
+    
+    /* Bottom Navigation Bar */
+    .bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        box-shadow: 0 -2px 20px rgba(0,0,0,0.1);
+        display: flex;
+        justify-content: space-around;
+        padding: 8px 0 calc(8px + env(safe-area-inset-bottom));
+        z-index: 1000;
+        border-top: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .bottom-nav a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        padding: 8px 12px;
+        color: var(--text-light);
+        font-size: 0.7rem;
+        transition: var(--transition);
+        text-decoration: none;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+    
+    .bottom-nav a.active {
+        color: var(--primary);
+    }
+    
+    .bottom-nav a.active i {
+        color: var(--primary);
+    }
+    
+    .bottom-nav a i {
+        font-size: 1.3rem;
+        margin-bottom: 2px;
+    }
+    
+    /* Add padding to body so content isn't hidden behind nav */
+    body {
+        padding-bottom: 70px !important;
+    }
+    
+    /* Adjust WhatsApp button so it doesn't overlap nav */
+    .whatsapp-float {
+        bottom: 85px !important;
+    }
+}
+
+/* Hide bottom nav on desktop */
+@media (min-width: 769px) {
+    .bottom-nav {
+        display: none !important;
+    }
+}
 
 /* Touch device optimizations */
 @media (hover: none) and (pointer: coarse) {
@@ -2066,6 +2134,8 @@ body {
     padding-top: env(safe-area-inset-top, 0px);
     padding-bottom: env(safe-area-inset-bottom, 0px);
 }
+
+
     </style>
 
     <!-- ===== LOCAL BUSINESS SCHEMA (Critical for Local SEO) ===== -->
@@ -2631,7 +2701,7 @@ body {
             <div class="gallery-grid reveal">
     <!-- Main Large Image (Spans 2x2) - Clinic Exterior -->
     <div class="gallery-item" style="background-image: url('images/clinic-exterior.webp'); background-size: cover; background-position: center;">
-        <img src="1775827634814.jpg" 
+        <img src="images/1775827634814.jpg" 
              alt="Ram Nila Dental Clinic exterior building near Meena Medical Panruti Tamil Nadu" 
              loading="lazy" 
              width="800" 
@@ -2642,7 +2712,7 @@ body {
     
     <!-- Image 2: Reception Area -->
     <div class="gallery-item" style="background-image: url('images/reception-area.webp'); background-size: cover; background-position: center;">
-        <img src="1775827711094.png" 
+        <img src="images/1775827711094.png" 
              alt="Welcoming reception and waiting area at Ram Nila Dental Clinic Panruti" 
              loading="lazy" 
              width="600" 
@@ -2653,7 +2723,7 @@ body {
     
     <!-- Image 3: Dental Chair/Treatment -->
     <div class="gallery-item" style="background-image: url('images/dental-chair.webp'); background-size: cover; background-position: center;">
-        <img src="1775827821569.png" 
+        <img src="images/1775827821569.png" 
              alt="Modern dental treatment chair with advanced equipment at Ram Nila Clinic Panruti" 
              loading="lazy" 
              width="600" 
@@ -2664,7 +2734,7 @@ body {
     
     <!-- Image 4: Equipment/Technology -->
     <div class="gallery-item" style="background-image: url('images/equipment.webp'); background-size: cover; background-position: center;">
-        <img src="IMG20260410181508.jpg" 
+        <img src="images/IMG20260410181508.jpg" 
              alt="Sterilized dental instruments and digital X-ray machine Ram Nila Dental Clinic" 
              loading="lazy" 
              width="600" 
@@ -2675,7 +2745,7 @@ body {
     
     <!-- Image 5: Team Photo -->
     <div class="gallery-item" style="background-image: url('images/team-photo.webp'); background-size: cover; background-position: center;">
-        <img src="IMG20260410181528.jpg" 
+        <img src="images/IMG20260410181528.jpg" 
              alt="Expert dental team at Ram Nila Multi-speciality Clinic Panruti Tamil Nadu" 
              loading="lazy" 
              width="600" 
@@ -3035,6 +3105,29 @@ body {
    aria-label="Chat on WhatsApp">
     <i class="fab fa-whatsapp"></i>
 </a>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="bottom-nav">
+    <a href="#home" class="active" onclick="updateNavActive(this)">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+    </a>
+    <a href="#services" onclick="updateNavActive(this)">
+        <i class="fas fa-tooth"></i>
+        <span>Services</span>
+    </a>
+    <a href="#appointment" onclick="updateNavActive(this)">
+        <i class="fas fa-calendar-plus"></i>
+        <span>Book</span>
+    </a>
+    <a href="#gallery" onclick="updateNavActive(this)">
+        <i class="fas fa-images"></i>
+        <span>Gallery</span>
+    </a>
+    <a href="#appointment" onclick="updateNavActive(this)">
+        <i class="fas fa-phone"></i>
+        <span>Contact</span>
+    </a>
+</nav>
     <!-- JavaScript -->
     <script>
         // ===== PRELOADER =====
@@ -3294,6 +3387,53 @@ body {
 
         console.log('🦷 BrightSmile Dental Clinic Website Loaded Successfully!');
 
+        // ===== HAPTIC FEEDBACK (Vibration on Tap) =====
+if ('vibrate' in navigator) {
+    document.querySelectorAll('a, button, .service-card, .team-card, .faq-question, .slider-btn, .gallery-item').forEach(el => {
+        el.addEventListener('touchstart', function() {
+            navigator.vibrate(10); // 10ms vibration
+        });
+    });
+}
+        // ===== BOTTOM NAV ACTIVE STATE =====
+function updateNavActive(el) {
+    // Remove active from all nav links
+    document.querySelectorAll('.bottom-nav a').forEach(link => {
+        link.classList.remove('active');
+    });
+    // Add active to clicked link
+    el.classList.add('active');
+    
+    // Optional: Close mobile menu if open
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    if (hamburger && navLinks) {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+    }
+}
+
+// Update active nav on scroll
+window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.bottom-nav a');
+    
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (window.scrollY >= sectionTop) {
+            current = section.getAttribute('id');
+        }
+    });
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+        }
+    });
+});
+
         // ===== GALLERY IMAGE LOADER + LIGHTBOX =====
 document.addEventListener('DOMContentLoaded', () => {
     // Smooth image loading
@@ -3358,6 +3498,94 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// ===== SERVICE WORKER REGISTRATION =====
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+                console.log('ServiceWorker registered: ', registration.scope);
+            })
+            .catch(error => {
+                console.log('ServiceWorker registration failed: ', error);
+            });
+    });
+}
+// ===== PULL TO REFRESH (Mobile Gesture) =====
+let startY = 0;
+let currentY = 0;
+let isRefreshing = false;
+
+document.addEventListener('touchstart', e => {
+    if (window.scrollY === 0) {
+        startY = e.touches[0].pageY;
+    }
+}, {passive: true});
+
+document.addEventListener('touchmove', e => {
+    if (window.scrollY === 0 && !isRefreshing) {
+        currentY = e.touches[0].pageY - startY;
+        if (currentY > 0 && currentY < 150) {
+            document.body.style.transform = `translateY(${currentY * 0.4}px)`;
+            document.body.style.transition = 'none';
+        }
+    }
+}, {passive: true});
+
+document.addEventListener('touchend', () => {
+    if (currentY > 100 && !isRefreshing) {
+        isRefreshing = true;
+        showRefreshIndicator();
+        // Simulate refresh (replace with actual data fetch if needed)
+        setTimeout(() => {
+            location.reload();
+        }, 1200);
+    }
+    document.body.style.transform = '';
+    document.body.style.transition = '';
+    currentY = 0;
+});
+
+function showRefreshIndicator() {
+    // Remove existing indicator if any
+    const existing = document.getElementById('refresh-indicator');
+    if (existing) existing.remove();
+    
+    const indicator = document.createElement('div');
+    indicator.id = 'refresh-indicator';
+    indicator.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Refreshing...';
+    indicator.style.cssText = `
+        position: fixed;
+        top: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--primary);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 50px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.9rem;
+        animation: slideDown 0.3s ease;
+    `;
+    document.body.appendChild(indicator);
+    
+    // Add animation keyframes if not exists
+    if (!document.getElementById('refresh-anim-style')) {
+        const style = document.createElement('style');
+        style.id = 'refresh-anim-style';
+        style.textContent = `
+            @keyframes slideDown {
+                from { top: 40px; opacity: 0; }
+                to { top: 80px; opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+}
     </script>
 </body>
 </html>
