@@ -1892,87 +1892,204 @@ a:focus-visible, button:focus-visible {
             .about .container { grid-template-columns: 1fr; gap: 40px; }
             .appointment-wrapper { grid-template-columns: 1fr; }
 
+    /* ===== FOOTER MOBILE OPTIMIZATION ===== */
+    /* Compact footer spacing */
     .footer {
-        padding: 40px 0 80px !important; /* Extra padding for bottom nav */
+        padding: 30px 0 75px !important; /* Less padding, room for bottom nav */
+        background: var(--text-dark);
     }
     
     .footer-grid { 
         grid-template-columns: 1fr;
-        gap: 30px !important;
+        gap: 20px !important; /* Tighter spacing */
         text-align: center;
+        padding: 0 10px;
     }
     
+    /* Brand section */
     .footer-brand {
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding: 0 5px;
     }
     
     .footer-brand .logo {
         justify-content: center;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
+        font-size: 1.1rem !important;
+    }
+    
+    .footer-brand .logo-icon {
+        width: 30px !important;
+        height: 30px !important;
+        font-size: 0.9rem !important;
     }
     
     .footer-brand p {
-        max-width: 300px;
-        margin: 0 auto 20px;
+        max-width: 280px;
+        margin: 0 auto 15px;
+        font-size: 0.85rem !important;
+        line-height: 1.6;
+        color: rgba(255,255,255,0.7);
     }
     
     .footer-brand .social-links {
         justify-content: center;
+        gap: 12px;
     }
     
+    .footer-brand .social-links a {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
+    }
+    
+    /* Section headings */
     .footer h4 {
         text-align: center;
-        margin-bottom: 20px;
+        margin: 15px 0 12px;
+        font-size: 1rem !important;
+        color: var(--white);
     }
     
+    /* Links list */
     .footer-links {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 10px;
+        gap: 8px;
+        padding: 0;
     }
     
+    .footer-links a {
+        font-size: 0.9rem !important;
+        padding: 4px 0;
+        color: rgba(255,255,255,0.7);
+        transition: var(--transition);
+    }
+    
+    .footer-links a:hover {
+        color: var(--primary-light);
+        padding-left: 0 !important;
+    }
+    
+    /* Working hours */
     .footer-hours {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 8px;
         align-items: center;
+        padding: 0;
+        margin: 0;
     }
     
     .footer-hours li {
         justify-content: center;
-        gap: 10px;
+        gap: 8px;
+        font-size: 0.85rem !important;
+        color: rgba(255,255,255,0.7);
+        padding: 0;
+        margin: 0;
     }
     
+    .footer-hours li span:last-child {
+        color: var(--primary-light);
+        font-weight: 500;
+    }
+    
+    /* Newsletter */
     .footer-newsletter {
         text-align: center;
+        padding: 0 5px;
     }
     
     .footer-newsletter p {
-        margin-bottom: 15px;
+        margin-bottom: 12px;
+        font-size: 0.85rem !important;
+        color: rgba(255,255,255,0.7);
     }
     
     .newsletter-form {
-        max-width: 300px;
+        max-width: 280px;
         margin: 0 auto;
+        gap: 8px;
     }
     
+    .newsletter-form input {
+        padding: 10px 14px !important;
+        font-size: 0.9rem !important;
+        min-height: 42px;
+    }
+    
+    .newsletter-form button {
+        padding: 10px 16px !important;
+        min-height: 42px;
+        font-size: 0.9rem;
+    }
+    
+    /* Footer bottom */
     .footer-bottom { 
         flex-direction: column; 
-        gap: 15px; 
+        gap: 12px; 
         text-align: center;
-        padding: 20px 0;
+        padding: 15px 0 10px;
+        margin-top: 10px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .footer-bottom p {
+        font-size: 0.8rem !important;
+        color: rgba(255,255,255,0.6);
+        margin: 0;
     }
     
     .footer-bottom-links {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 15px;
+        gap: 12px;
     }
-}     
+    
+    .footer-bottom-links a {
+        font-size: 0.75rem !important;
+        color: rgba(255,255,255,0.6);
+        padding: 0 5px;
+    }
+    
+    .footer-bottom-links a:hover {
+        color: var(--primary-light);
+    }
+}
 
+/* Extra small mobile */
+@media (max-width: 480px) {
+    .footer {
+        padding: 25px 0 70px !important;
+    }
+    
+    .footer-brand p {
+        font-size: 0.8rem !important;
+    }
+    
+    .footer-links a,
+    .footer-hours li,
+    .footer-newsletter p {
+        font-size: 0.85rem !important;
+    }
+    
+    .footer-bottom p,
+    .footer-bottom-links a {
+        font-size: 0.7rem !important;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+    }
+    
+    .newsletter-form button {
+        width: 100%;
+    }
+}
         @media (max-width: 768px) {
             .nav-links {
                 position: fixed;
@@ -2476,7 +2593,6 @@ body {
                 <a href="#services">Services</a>
                 <a href="#about">About</a>
                 <a href="#team">Doctors</a>
-                <a href="#pricing">Pricing</a>
                 <a href="#testimonials">Reviews</a>
                 <a href="#appointment" class="nav-cta">Book Appointment</a>
             </div>
@@ -2498,7 +2614,7 @@ body {
                     Multi-speciality Dental Clinic
                 </div>
                 <h1>Trusted Dental Care in <span>Panruti, Tamil Nadu</span></h1>
-<p>Expert dentists near Meena Medical offering painless teeth cleaning, implants, root canal & emergency dental services. Serving Panruti, Cuddalore & surrounding areas.</p>
+<p>With 3 years of clinical experience, we offer a wide range of dental treatments with confidence and precision. We have worked closely with implant specialists and have hands-on experience in assisting and guiding advanced implant procedures, including zygomatic implants, pterygoid implants, and full mouth rehabilitation.</p>
 <div class="hero-buttons">
                     <a href="#appointment" class="btn btn-primary">
                         <i class="fas fa-calendar-check"></i>
@@ -2511,15 +2627,15 @@ body {
                 </div>
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <div class="stat-number" data-count="15">0</div>
+                        <div class="stat-number" data-count="3">0</div>
                         <div class="stat-label">Years Experience</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number" data-count="25">0</div>
+                        <div class="stat-number" data-count="6">0</div>
                         <div class="stat-label">Expert Dentists</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number" data-count="50">0</div>
+                        <div class="stat-number" data-count="100">0</div>
                         <div class="stat-label">Happy Patients (K+)</div>
                     </div>
                 </div>
@@ -2551,7 +2667,7 @@ body {
                         </div>
                         <div class="floating-card-text">
                             <h4>4.9 Rating</h4>
-                            <p>2000+ Reviews</p>
+                            <p>1000+ Reviews</p>
                         </div>
                     </div>
                 </div>
@@ -2581,7 +2697,7 @@ body {
                     </div>
                     <h3>General Dentistry</h3>
                     <p>Regular checkups, cleanings, fillings, and preventive care to maintain your oral health.</p>
-                    <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    <a href="https://wa.me/6381324581?text=Hello%20Ram Nila_Dental%20Clinic!%20I%20would%20like%20to%20learn%20about%20Regular checkups, cleanings, fillings, and preventive care to maintain your oral health." class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="service-card reveal">
                     <div class="service-icon">
@@ -2589,7 +2705,7 @@ body {
                     </div>
                     <h3>Cosmetic Dentistry</h3>
                     <p>Teeth whitening, veneers, and smile makeovers to enhance your beautiful smile.</p>
-                    <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    <a href="https://wa.me/6381324581?text=Hello%20Ram Nila_Dental%20Clinic!%20I%20would%20like%20to%20learn%20about%20Cosmetic Dentistry" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="service-card reveal">
                     <div class="service-icon">
@@ -2597,7 +2713,7 @@ body {
                     </div>
                     <h3>Dental Implants</h3>
                     <p>Permanent tooth replacement solutions that look, feel, and function like natural teeth.</p>
-                    <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    <a href="https://wa.me/6381324581?text=Hello%20Ram Nila_Dental%20Clinic!%20I%20would%20like%20to%20learn%20about%20Dental Implants" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="service-card reveal">
                     <div class="service-icon">
@@ -2605,7 +2721,7 @@ body {
                     </div>
                     <h3>Orthodontics</h3>
                     <p>Braces, Invisalign, and alignment treatments for perfectly straight teeth.</p>
-                    <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    <a href="https://wa.me/6381324581?text=Hello%20Ram Nila_Dental%20Clinic!%20I%20would%20like%20to%20learn%20about%20Orthodontics" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="service-card reveal">
                     <div class="service-icon">
@@ -2613,7 +2729,7 @@ body {
                     </div>
                     <h3>Root Canal</h3>
                     <p>Pain-free root canal treatments using advanced techniques and modern equipment.</p>
-                    <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    <a href="https://wa.me/6381324581?text=Hello%20Ram Nila_Dental%20Clinic!%20I%20would%20like%20to%20learn%20about%20Root Canal" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="service-card reveal">
                     <div class="service-icon">
@@ -2621,7 +2737,7 @@ body {
                     </div>
                     <h3>Pediatric Dentistry</h3>
                     <p>Gentle and fun dental care designed specifically for children of all ages.</p>
-                    <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    <a href="https://wa.me/6381324581?text=Hello%20Ram Nila_Dental%20Clinic!%20I%20would%20like%20to%20learn%20about%20Pediatric Dentistry" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -2635,7 +2751,7 @@ body {
                     <i class="fas fa-hospital"></i>
                 </div>
                 <div class="experience-badge">
-                    <span class="number">15+</span>
+                    <span class="number">3+</span>
                     <span class="text">Years of<br>Excellence</span>
                 </div>
             </div>
@@ -2645,7 +2761,14 @@ body {
                     About Us
                 </div>
                 <h2>We're Committed to Your <span>Dental Health</span></h2>
-                <p>At Ram Nila Multi-speciality Dental Clinic Panruti, we believe everyone deserves a healthy, beautiful smile. Our state-of-the-art facility combines cutting-edge technology with a warm, welcoming atmosphere.</p>
+                <p><b>At Ram Nila Multi-speciality Dental Clinic Panruti,</b><br> We are proud to announce the opening of our new dental clinic, dedicated to providing high-quality and comprehensive dental care.2
+With 3 years of clinical experience, we offer a wide range of dental treatments with confidence and precision. We have worked closely with implant specialists and have hands-on experience in assisting and guiding advanced implant procedures, including zygomatic implants, pterygoid implants, and full mouth rehabilitation.
+
+We are also passionate about educating patients, explaining dental procedures in a clear and simple way so you can make informed decisions about your oral health.
+
+Our priority is patient comfort and care we treat every patient with compassion, attention, and respect, ensuring a positive and stress-free dental experience.
+
+<b>Your smile is in safe hands with us.</b></p>
                 <div class="about-features">
                     <div class="about-feature">
                         <i class="fas fa-check"></i>
@@ -2756,69 +2879,6 @@ body {
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section class="section pricing" id="pricing">
-        <div class="container">
-            <div class="section-header reveal">
-                <div class="section-badge">
-                    <i class="fas fa-tag"></i>
-                    Pricing Plans
-                </div>
-                <h2>Affordable <span>Dental Packages</span></h2>
-                <p>Transparent pricing with no hidden fees. Choose the plan that works best for you.</p>
-            </div>
-            <div class="pricing-grid">
-                <div class="pricing-card reveal">
-                    <div class="pricing-icon">
-                        <i class="fas fa-tooth"></i>
-                    </div>
-                    <h3>Basic Care</h3>
-                    <div class="pricing-price">₹599 <span>/visit</span></div>
-                    <p class="pricing-desc">Essential dental care</p>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check-circle"></i> Dental Checkup</li>
-                        <li><i class="fas fa-check-circle"></i> Professional Cleaning</li>
-                        <li><i class="fas fa-check-circle"></i> X-Ray Examination</li>
-                        <li><i class="fas fa-check-circle"></i> Oral Health Assessment</li>
-                        <li><i class="fas fa-check-circle"></i> Treatment Plan</li>
-                    </ul>
-                    <button class="btn-pricing">Get Started</button>
-                </div>
-                <div class="pricing-card featured reveal">
-                    <div class="pricing-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h3>Premium Care</h3>
-                    <div class="pricing-price">₹2599 <span>/visit</span></div>
-                    <p class="pricing-desc">Complete dental care</p>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check-circle"></i> Everything in Basic</li>
-                        <li><i class="fas fa-check-circle"></i> Teeth Whitening</li>
-                        <li><i class="fas fa-check-circle"></i> Cavity Fillings</li>
-                        <li><i class="fas fa-check-circle"></i> Gum Treatment</li>
-                        <li><i class="fas fa-check-circle"></i> Priority Scheduling</li>
-                    </ul>
-                    <button class="btn-pricing">Get Started</button>
-                </div>
-                <div class="pricing-card reveal">
-                    <div class="pricing-icon">
-                        <i class="fas fa-crown"></i>
-                    </div>
-                    <h3>Family Plan</h3>
-                    <div class="pricing-price">₹5299 <span>/month</span></div>
-                    <p class="pricing-desc">Whole family coverage</p>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check-circle"></i> Up to 4 Members</li>
-                        <li><i class="fas fa-check-circle"></i> All Basic Services</li>
-                        <li><i class="fas fa-check-circle"></i> Emergency Visits</li>
-                        <li><i class="fas fa-check-circle"></i> 20% Off Cosmetic</li>
-                        <li><i class="fas fa-check-circle"></i> Free Consultations</li>
-                    </ul>
-                    <button class="btn-pricing">Get Started</button>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Testimonials Section -->
     <section class="section testimonials" id="testimonials">
@@ -2842,7 +2902,7 @@ body {
                             <div class="testimonial-author">
                                 <div class="testimonial-avatar">JD</div>
                                 <div class="testimonial-author-info">
-                                    <h4>Jennifer Davis</h4>
+                                    <h4>Jennifer</h4>
                                     <p>Regular Patient</p>
                                 </div>
                             </div>
@@ -2857,7 +2917,7 @@ body {
                             <div class="testimonial-author">
                                 <div class="testimonial-avatar">RT</div>
                                 <div class="testimonial-author-info">
-                                    <h4>Robert Thompson</h4>
+                                    <h4>Robert</h4>
                                     <p>Implant Patient</p>
                                 </div>
                             </div>
@@ -2872,7 +2932,7 @@ body {
                             <div class="testimonial-author">
                                 <div class="testimonial-avatar">MA</div>
                                 <div class="testimonial-author-info">
-                                    <h4>Maria Anderson</h4>
+                                    <h4>Shanthi</h4>
                                     <p>Parent of 3</p>
                                 </div>
                             </div>
@@ -3007,7 +3067,7 @@ body {
                         <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
                     </div>
                     <div class="faq-answer">
-                        <p>Call our emergency hotline immediately at (555) 123-4567. We offer same-day emergency appointments and are available 24/7 for urgent dental issues.</p>
+                        <p>Call our emergency hotline immediately at +91 6381324581. We offer same-day emergency appointments and are available 24/7 for urgent dental issues.</p>
                     </div>
                 </div>
                 <div class="faq-item reveal">
@@ -3044,7 +3104,7 @@ body {
                         </div>
                         <div>
                             <h4>Phone</h4>
-                            <p>(555) 123-4567</p>
+                            <p>6381324581</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -3053,7 +3113,7 @@ body {
                         </div>
                         <div>
                             <h4>Email</h4>
-                            <p>info@brightsmile.com</p>
+                            <p>info@ramniladentalclinic.com</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -3215,7 +3275,7 @@ body {
                     <i class="fas fa-award"></i> Why Local Patients Trust Us
                 </h3>
                 <ul style="line-height: 2; color: var(--text-medium);">
-                    <li>✓ 15+ Years Serving Panruti</li>
+                    <li>✓ 3+ Years Serving Panruti</li>
                     <li>✓ Tamil & English Speaking Staff</li>
                     <li>✓ Affordable Pricing for Local Families</li>
                     <li>✓ Emergency Care Available</li>
@@ -3240,7 +3300,7 @@ body {
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/1234567890?text=Hello%20Ram Nila_Dental%20Clinic!%20I%20would%20like%20to%20book%20an%20appointment."><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://wa.me/6381324581?text=Hello%20Ram Nila_Dental%20Clinic!%20I%20would%20like%20to%20book%20an%20appointment."><i class="fab fa-whatsapp"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     </div>
@@ -3252,7 +3312,6 @@ body {
                         <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
                         <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
                         <li><a href="#team"><i class="fas fa-chevron-right"></i> Our Team</a></li>
-                        <li><a href="#pricing"><i class="fas fa-chevron-right"></i> Pricing</a></li>
                         <li><a href="#appointment"><i class="fas fa-chevron-right"></i> Contact</a></li>
                     </ul>
                 </div>
@@ -3303,7 +3362,7 @@ body {
         </div>
     </div>
 <!-- WhatsApp Floating Button -->
-<a href="https://wa.me/1234567890?text=Hello%20Ram Nila_Dental%20Clinic!%20I%20would%20like%20to%20book%20an%20appointment." 
+<a href="https://wa.me/6381324581?text=Hello%20Ram Nila_Dental%20Clinic!%20I%20would%20like%20to%20book%20an%20appointment." 
    class="whatsapp-float" 
    target="_blank" 
    rel="noopener noreferrer" 
